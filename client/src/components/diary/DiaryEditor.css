@@ -1,0 +1,277 @@
+* {
+  box-sizing: border-box;
+}
+
+.diary-editor {
+  min-height: 100vh;
+  background: #f3eedf;
+  color: #674f43;
+  font-family: "DM Sans", sans-serif;
+
+  background-image:
+    radial-gradient(
+      rgba(100, 80, 60, 0.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 20px 20px;
+}
+
+
+/* ---------- top controls ---------- */
+
+.floating-back,
+.floating-save {
+  position: fixed;
+  top: 24px;
+  z-index: 20;
+
+  appearance: none;
+  border: 0;
+  background: transparent;
+
+  color: #3155a6;
+  cursor: pointer;
+}
+
+.floating-back {
+  left: 32px;
+  font-family: "Caveat", cursive;
+  font-size: 21px;
+}
+
+.floating-save {
+  right: 32px;
+
+  padding: 7px 15px;
+
+  border: 1px solid #3155a6;
+  border-radius: 20px;
+
+  background: rgba(255, 253, 244, 0.8);
+
+  font-size: 13px;
+}
+
+
+/* ---------- editor layout ---------- */
+
+.editor-stage {
+  min-height: 100vh;
+
+  display: grid;
+
+  grid-template-columns: 64px minmax(0, 780px) 64px;
+
+  justify-content: center;
+  align-items: start;
+
+  column-gap: 25px;
+
+  padding: 90px 30px 70px;
+}
+
+
+/* ---------- tools ---------- */
+
+.editor-tools {
+  position: sticky;
+  top: 120px;
+
+  width: 64px;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 9px;
+
+  background: #fffaf0;
+
+  border: 1px solid #d5c9b7;
+  border-radius: 30px;
+
+  box-shadow:
+    3px 5px 12px rgba(90, 70, 55, 0.08);
+
+  transform: rotate(-2deg);
+}
+
+.editor-tools button {
+  appearance: none;
+
+  width: 44px;
+  height: 44px;
+
+  flex: 0 0 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0 !important;
+  border-radius: 50%;
+
+  background: transparent !important;
+
+  color: #3155a6;
+
+  font-family: "Caveat", cursive;
+  font-size: 24px;
+
+  cursor: pointer;
+}
+
+.editor-tools button:hover {
+  background: #f0d0d2 !important;
+}
+
+.editor-tools span {
+  display: none;
+}
+
+
+/* ---------- paper ---------- */
+
+.diary-paper {
+  position: relative;
+
+  width: 780px;
+  max-width: 100%;
+
+  min-height: 850px;
+
+  padding: 70px 75px;
+
+  box-sizing: border-box;
+
+  background: #fffdf5;
+
+  border: 1px solid #d7cbb9;
+
+  box-shadow:
+    8px 10px 0 rgba(49, 85, 166, 0.08),
+    0 18px 35px rgba(80, 60, 45, 0.08);
+
+  transform: rotate(-0.4deg);
+}
+
+
+/* ---------- tape ---------- */
+
+.paper-tape {
+  position: absolute;
+
+  width: 125px;
+  height: 28px;
+
+  top: -12px;
+  left: 42%;
+
+  background: rgba(232, 181, 185, 0.6);
+
+  transform: rotate(-2deg);
+}
+
+
+/* ---------- paper top ---------- */
+
+.paper-top {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-bottom: 15px;
+
+  border-bottom: 1px dashed #d8cdbd;
+
+  color: #9a786c;
+
+  font-family: "Caveat", cursive;
+  font-size: 19px;
+}
+
+.paper-flower {
+  color: #df91a5;
+  font-size: 27px;
+}
+
+
+/* ---------- writing ---------- */
+
+.paper-content {
+  position: relative;
+  z-index: 2;
+
+  margin-top: 60px;
+
+  font-family: "Caveat", cursive;
+}
+
+.dear {
+  margin: 0;
+
+  color: #654e43;
+
+  font-size: 32px;
+}
+
+.placeholder {
+  margin-top: 25px;
+
+  color: #bbaea4;
+
+  font-size: 26px;
+}
+
+
+/* ---------- decoration ---------- */
+
+.paper-heart {
+  position: absolute;
+
+  right: 42px;
+  bottom: 35px;
+
+  color: #8c7ca9;
+
+  font-size: 34px;
+}
+
+
+/* ---------- mobile ---------- */
+
+@media (max-width: 950px) {
+
+  .editor-stage {
+    grid-template-columns: 1fr;
+    justify-items: center;
+
+    padding: 80px 20px 100px;
+  }
+
+  .editor-tools {
+    position: fixed;
+
+    left: 50%;
+    bottom: 20px;
+    top: auto;
+
+    width: auto;
+
+    flex-direction: row !important;
+
+    transform: translateX(-50%);
+    z-index: 30;
+  }
+
+  .diary-paper {
+    width: min(780px, 92vw);
+    min-height: 750px;
+  }
+}
