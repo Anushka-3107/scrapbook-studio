@@ -1,0 +1,821 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
+
+@import "tailwindcss";
+
+
+:root {
+  --cream: #f5eedc;
+  --paper: #fffaf0;
+
+  --sage: #879873;
+  --sage-dark: #617451;
+
+  --pink: #d99a9a;
+  --pink-light: #efd0cf;
+  --rose: #bd7778;
+
+  --blush: #f4dfda;
+
+  --brown: #665047;
+  --brown-light: #92796d;
+
+  --green-paper: #e1ead6;
+}
+
+
+/* RESET */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  color: var(--brown);
+  font-family: "DM Sans", sans-serif;
+}
+
+
+/* =================================
+   SCRAPBOOK BACKGROUND
+================================= */
+
+.home {
+  position: relative;
+
+  min-height: 100vh;
+
+  padding: 30px 6vw 70px;
+
+  overflow: hidden;
+
+  background-color: var(--cream);
+
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(110, 85, 60, 0.025) 0px,
+      rgba(110, 85, 60, 0.025) 1px,
+      transparent 1px,
+      transparent 5px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(110, 85, 60, 0.018) 0px,
+      rgba(110, 85, 60, 0.018) 1px,
+      transparent 1px,
+      transparent 7px
+    );
+}
+
+
+/* =================================
+   HEADER
+================================= */
+
+.header {
+  position: relative;
+
+  z-index: 5;
+
+  text-align: center;
+}
+
+.header p {
+  margin: 0;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 21px;
+
+  color: var(--brown-light);
+
+  transform: rotate(-2deg);
+}
+
+.header h1 {
+  margin: 0;
+
+  font-family: "Caveat", cursive;
+
+  font-size: clamp(72px, 9vw, 115px);
+
+  font-weight: 600;
+
+  line-height: .9;
+
+  color: var(--sage-dark);
+
+  transform: rotate(-2deg);
+}
+
+.header > span {
+  display: block;
+
+  margin-top: 10px;
+
+  color: var(--rose);
+
+  font-size: 25px;
+}
+
+
+/* =================================
+   NEW ENTRY
+================================= */
+
+.new-entry {
+  display: flex;
+
+  align-items: center;
+  gap: 7px;
+
+  margin: 35px auto 0;
+
+  padding: 10px 22px;
+
+  border: 2px solid var(--sage-dark);
+
+  border-radius: 50px;
+
+  background: var(--pink-light);
+
+  color: var(--brown);
+
+  font-family: "Caveat", cursive;
+
+  font-size: 24px;
+
+  box-shadow:
+    3px 4px 0 rgba(97, 116, 81, .15);
+
+  transform: rotate(-2deg);
+
+  transition: .2s ease;
+
+  cursor: pointer;
+}
+
+.new-entry:hover {
+  transform: rotate(1deg) translateY(-3px);
+
+  background: var(--blush);
+}
+
+
+/* =================================
+   BOARD
+================================= */
+
+.home-board {
+  position: relative;
+
+  max-width: 1050px;
+
+  min-height: 600px;
+
+  margin: 55px auto 0;
+}
+
+
+/* =================================
+   FEATURE CARDS
+================================= */
+
+.feature {
+  position: absolute;
+
+  border-radius: 18px;
+
+  box-shadow:
+    5px 8px 14px rgba(90, 65, 50, .13);
+
+  overflow: hidden;
+}
+
+.feature-content {
+  position: relative;
+
+  z-index: 2;
+
+  padding: 38px;
+}
+
+.feature-icon {
+  display: block;
+
+  margin-bottom: 4px;
+
+  font-size: 38px;
+}
+
+.small-label {
+  margin: 0;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 20px;
+
+  color: var(--brown-light);
+}
+
+.feature h2 {
+  margin: 4px 0 15px;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 34px;
+
+  font-weight: 400;
+
+  color: var(--brown);
+}
+
+.handwritten {
+  margin: 0;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 23px;
+
+  line-height: 1.35;
+
+  color: var(--brown-light);
+}
+
+
+/* =================================
+   SCRAP BUTTON
+================================= */
+
+.scrap-button {
+  margin-top: 25px;
+
+  padding: 7px 15px;
+
+  border: 0;
+  border-bottom: 1px solid var(--rose);
+
+  background: transparent;
+
+  color: var(--rose);
+
+  font-family: "Caveat", cursive;
+
+  font-size: 20px;
+
+  cursor: pointer;
+
+  transform: rotate(-2deg);
+}
+
+.scrap-button:hover {
+  color: var(--sage-dark);
+}
+
+
+/* =================================
+   DIARY
+================================= */
+
+.diary-feature {
+  width: 430px;
+  height: 390px;
+
+  left: 50%;
+  top: 15px;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      var(--paper) 0px,
+      var(--paper) 31px,
+      rgba(180, 150, 130, .13) 32px
+    );
+
+  transform:
+    translateX(-50%)
+    rotate(2deg);
+}
+
+.diary-feature .tape {
+  position: absolute;
+
+  width: 120px;
+  height: 35px;
+
+  top: -7px;
+  left: 50%;
+
+  background: rgba(217, 154, 154, .5);
+
+  transform: translateX(-50%) rotate(-3deg);
+}
+
+.diary-feature .feature-content {
+  padding-top: 55px;
+}
+
+.flower-decoration {
+  position: absolute;
+
+  right: 35px;
+  top: 30px;
+
+  font-size: 30px;
+
+  color: var(--rose);
+}
+
+.heart-decoration {
+  position: absolute;
+
+  right: 40px;
+  bottom: 35px;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 60px;
+
+  color: var(--rose);
+
+  transform: rotate(-10deg);
+}
+
+
+/* =================================
+   MESSAGE
+================================= */
+
+.message-feature {
+  width: 300px;
+  height: 280px;
+
+  left: 2%;
+  top: 230px;
+
+  background: var(--pink-light);
+
+  transform: rotate(-4deg);
+}
+
+.message-feature h2 {
+  font-size: 30px;
+}
+
+.message-decoration {
+  position: absolute;
+
+  right: 20px;
+  top: 15px;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 65px;
+
+  color: var(--rose);
+
+  transform: rotate(15deg);
+}
+
+
+/* =================================
+   BOUQUET
+================================= */
+
+.bouquet-feature {
+  width: 320px;
+  height: 300px;
+
+  right: 2%;
+  top: 230px;
+
+  background: var(--green-paper);
+
+  transform: rotate(4deg);
+}
+
+.bouquet-feature h2 {
+  font-size: 30px;
+}
+
+.flower-row {
+  position: absolute;
+
+  bottom: 15px;
+  left: 35px;
+
+  font-size: 34px;
+
+  transform: rotate(-3deg);
+}
+
+
+/* =================================
+   LITTLE DECORATIONS
+================================= */
+
+.sticker {
+  position: absolute;
+
+  font-family: serif;
+
+  color: var(--rose);
+
+  z-index: 4;
+}
+
+.sticker-one {
+  left: 10%;
+
+  top: 120px;
+
+  font-size: 42px;
+
+  transform: rotate(-15deg);
+}
+
+.sticker-two {
+  right: 12%;
+
+  top: 150px;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 55px;
+
+  transform: rotate(10deg);
+}
+
+.sticker-three {
+  left: 23%;
+
+  bottom: 20px;
+
+  color: var(--sage);
+
+  font-size: 30px;
+}
+
+.tiny-note {
+  position: absolute;
+
+  left: 7%;
+  bottom: 50px;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 24px;
+
+  color: var(--brown-light);
+
+  transform: rotate(-5deg);
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 850px) {
+
+  .home {
+    padding: 25px 20px 50px;
+  }
+
+  .home-board {
+    min-height: 1100px;
+  }
+
+  .diary-feature {
+    width: min(90vw, 430px);
+  }
+
+  .message-feature {
+    left: 0;
+    top: 450px;
+  }
+
+  .bouquet-feature {
+    right: 0;
+    top: 700px;
+  }
+
+  .sticker,
+  .tiny-note {
+    display: none;
+  }
+}
+
+
+/* =================================
+   EXTRA SCRAPBOOK DETAILS
+================================= */
+
+/* Header decoration */
+
+.header-decoration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 10px;
+
+  color: var(--rose);
+}
+
+.header-decoration span {
+  font-family: serif;
+  font-size: 18px;
+}
+
+.header-decoration i {
+  width: 55px;
+  height: 1px;
+
+  background: var(--pink);
+
+  transform: rotate(-2deg);
+}
+
+
+/* =================================
+   PAPER GRAIN
+================================= */
+
+.home::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: .28;
+
+  background-image:
+    radial-gradient(
+      rgba(100, 75, 55, .12) .5px,
+      transparent .6px
+    );
+
+  background-size: 5px 5px;
+
+  mix-blend-mode: multiply;
+
+  z-index: 1;
+}
+
+
+/* =================================
+   DIARY PAPER DETAILS
+================================= */
+
+.diary-feature {
+  border: 1px solid rgba(140, 110, 90, .08);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.45),
+      transparent 8%,
+      transparent 92%,
+      rgba(210,185,160,.12)
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      var(--paper) 0px,
+      var(--paper) 31px,
+      rgba(180,150,130,.13) 32px
+    );
+}
+
+
+/* tiny paper corner */
+
+.diary-feature::after {
+  content: "";
+
+  position: absolute;
+
+  width: 45px;
+  height: 45px;
+
+  right: 0;
+  bottom: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      transparent 50%,
+      #eadfca 51%
+    );
+
+  opacity: .65;
+}
+
+
+/* =================================
+   CARD PAPER EDGES
+================================= */
+
+.message-feature::after,
+.bouquet-feature::after {
+  content: "";
+
+  position: absolute;
+  inset: 7px;
+
+  border: 1px dashed rgba(100, 75, 55, .12);
+
+  border-radius: 13px;
+
+  pointer-events: none;
+}
+
+
+/* =================================
+   NEW ENTRY BUTTON
+================================= */
+
+.new-entry {
+  position: relative;
+
+  border-color: var(--sage);
+
+  background:
+    linear-gradient(
+      135deg,
+      #f0cecf,
+      #f5ddd5
+    );
+
+  box-shadow:
+    3px 4px 0 rgba(97,116,81,.12),
+    0 5px 12px rgba(100,75,55,.08);
+}
+
+.new-entry::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 4px;
+
+  border: 1px dashed rgba(189,119,120,.35);
+
+  border-radius: 40px;
+
+  pointer-events: none;
+}
+
+.button-heart {
+  color: var(--rose);
+
+  font-size: 25px;
+
+  transform: rotate(8deg);
+}
+
+
+/* =================================
+   FEATURE CARD TEXT
+================================= */
+
+.feature h2 {
+  letter-spacing: -.5px;
+}
+
+.small-label {
+  transform: rotate(-2deg);
+}
+
+.handwritten {
+  transform: rotate(-1deg);
+}
+
+
+/* =================================
+   DIARY FLOWER
+================================= */
+
+.flower-decoration {
+  font-size: 32px;
+
+  transform: rotate(8deg);
+}
+
+
+/* =================================
+   MESSAGE CARD
+================================= */
+
+.message-feature {
+  background:
+    linear-gradient(
+      135deg,
+      #efd0d0,
+      #f4dede
+    );
+}
+
+.message-feature .feature-icon {
+  transform: rotate(-6deg);
+}
+
+
+/* =================================
+   BOUQUET CARD
+================================= */
+
+.bouquet-feature {
+  background:
+    linear-gradient(
+      135deg,
+      #e0ead6,
+      #e8efdd
+    );
+}
+
+.bouquet-feature .feature-icon {
+  transform: rotate(5deg);
+}
+
+
+/* =================================
+   SCRAPBOOK STICKERS
+================================= */
+
+.sticker-one {
+  font-size: 48px;
+
+  text-shadow:
+    2px 3px 0 rgba(255,255,255,.7);
+
+  transform: rotate(-12deg);
+}
+
+.sticker-two {
+  text-shadow:
+    2px 3px 0 rgba(255,255,255,.7);
+}
+
+.sticker-three {
+  text-shadow:
+    1px 2px 0 rgba(255,255,255,.7);
+}
+
+
+/* =================================
+   HANDWRITTEN NOTE
+================================= */
+
+.tiny-note {
+  padding: 4px 10px;
+
+  border-bottom: 1px solid var(--pink);
+
+  background: rgba(255,250,240,.35);
+}
+
+
+/* =================================
+   HOVER — VERY SUBTLE
+================================= */
+
+.diary-feature,
+.message-feature,
+.bouquet-feature {
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.diary-feature:hover {
+  transform:
+    translateX(-50%)
+    rotate(1deg)
+    translateY(-4px);
+
+  box-shadow:
+    8px 12px 18px rgba(90,65,50,.16);
+}
+
+.message-feature:hover {
+  transform:
+    rotate(-2deg)
+    translateY(-4px);
+}
+
+.bouquet-feature:hover {
+  transform:
+    rotate(2deg)
+    translateY(-4px);
+}
