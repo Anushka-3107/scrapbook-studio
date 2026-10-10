@@ -41,11 +41,10 @@ button {
 /* =================================
    PAGE
 ================================= */
-
 .home {
   min-height: 100vh;
 
-  padding: 28px 6vw 70px;
+  padding: 45px 6vw 70px;
 
   overflow: hidden;
 
@@ -115,34 +114,40 @@ button {
 ================================= */
 
 .new-entry {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
 
-  margin: 25px auto 48px;
+  width: fit-content;
 
+  margin: 35px auto 0;
   padding: 10px 22px;
 
   border: 3px solid var(--blue);
-  border-radius: 50px;
+  border-radius: 30px;
 
   background: var(--cream);
   color: var(--blue);
 
+  font-family: "Caveat", cursive;
+  font-size: 21px;
   font-weight: 600;
 
-  box-shadow: 4px 4px 0 var(--blue);
+  text-decoration: none;
 
-  cursor: pointer;
+  box-shadow: 4px 5px 0 var(--blue);
 
-  transition: 0.15s ease;
+  transition: transform 0.2s ease;
 }
 
 .new-entry:hover {
-  transform: translate(2px, 2px) rotate(-1deg);
-
-  box-shadow: 2px 2px 0 var(--blue);
+  transform: translateY(-2px);
 }
 
-
+.new-entry span {
+  font-size: 21px;
+}
 /* =================================
    COLLAGE
 ================================= */
@@ -154,7 +159,7 @@ button {
 
   height: 650px;
 
-  margin: auto;
+  margin: 55px auto 0;
 }
 
 
@@ -341,26 +346,35 @@ button {
 ================================= */
 
 .scrap-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content;
+
   padding: 8px 16px;
 
   background: var(--cream);
-
   color: var(--blue);
 
   border: 2px solid var(--blue);
-
   border-radius: 25px;
 
   box-shadow: 3px 3px 0 var(--blue);
 
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+
   cursor: pointer;
+
+  appearance: none;
 
   transition: 0.15s ease;
 }
 
 .scrap-link:hover {
   transform: translate(2px, 2px);
-
   box-shadow: 1px 1px 0 var(--blue);
 }
 
@@ -548,4 +562,39 @@ button {
   .decor {
     display: none;
   }
+}
+
+/* ---------- DIARY BUTTON ---------- */
+
+.diary-scrap .scrap-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content;
+  padding: 8px 16px;
+
+  background: var(--cream);
+  color: var(--blue);
+
+  border: 2px solid var(--blue);
+  border-radius: 25px;
+
+  box-shadow: 3px 3px 0 var(--blue);
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition: transform 0.15s ease,
+              box-shadow 0.15s ease;
+}
+
+.diary-scrap .scrap-button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--blue);
 }

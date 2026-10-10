@@ -1,0 +1,23 @@
+-- CreateEnum
+CREATE TYPE "ElementType" AS ENUM ('Text', 'IMAGE', 'STICKER', 'DRAWING');
+
+-- CreateTable
+CREATE TABLE "PageElement" (
+    "id" TEXT NOT NULL,
+    "type" "ElementType" NOT NULL,
+    "x" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "y" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "width" DOUBLE PRECISION NOT NULL DEFAULT 100,
+    "height" DOUBLE PRECISION NOT NULL DEFAULT 100,
+    "rotation" DOUBLE PRECISION NOT NULL DEFAULT 0,
+    "zIndex" INTEGER NOT NULL DEFAULT 0,
+    "content" TEXT,
+    "pageId" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "PageElement_pkey" PRIMARY KEY ("id")
+);
+
+-- AddForeignKey
+ALTER TABLE "PageElement" ADD CONSTRAINT "PageElement_pageId_fkey" FOREIGN KEY ("pageId") REFERENCES "DiaryPage"("id") ON DELETE CASCADE ON UPDATE CASCADE;

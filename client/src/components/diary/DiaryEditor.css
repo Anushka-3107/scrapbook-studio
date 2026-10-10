@@ -61,7 +61,7 @@
 
   display: grid;
 
-  grid-template-columns: 64px minmax(0, 780px) 64px;
+grid-template-columns: 105px minmax(0, 780px) 64px;
 
   justify-content: center;
   align-items: start;
@@ -74,24 +74,26 @@
 
 /* ---------- tools ---------- */
 
+/* ---------- TOOLS ---------- */
+
 .editor-tools {
   position: sticky;
   top: 120px;
 
-  width: 64px;
+  width: 105px;
 
-  display: flex !important;
-  flex-direction: column !important;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 
-  gap: 7px;
+  gap: 6px;
 
-  padding: 9px;
+  padding: 10px 7px;
 
   background: #fffaf0;
 
   border: 1px solid #d5c9b7;
-  border-radius: 30px;
+  border-radius: 28px;
 
   box-shadow:
     3px 5px 12px rgba(90, 70, 55, 0.08);
@@ -99,38 +101,60 @@
   transform: rotate(-2deg);
 }
 
-.editor-tools button {
+.editor-tool {
   appearance: none;
 
-  width: 44px;
-  height: 44px;
+  width: 90px;
+  height: 48px;
 
-  flex: 0 0 44px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 6px 10px;
+
+  border: 0;
+  border-radius: 18px;
+
+  background: transparent;
+
+  color: #3155a6;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.editor-tool:hover {
+  background: #f8e1e5;
+  transform: translateX(2px);
+}
+
+.tool-icon {
+  width: 28px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border: 0 !important;
-  border-radius: 50%;
-
-  background: transparent !important;
-
-  color: #3155a6;
-
   font-family: "Caveat", cursive;
-  font-size: 24px;
-
-  cursor: pointer;
+  font-size: 25px;
+  font-weight: 600;
 }
 
-.editor-tools button:hover {
+.tool-name {
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.active-tool {
   background: #f0d0d2 !important;
 }
 
-.editor-tools span {
-  display: none;
-}
+
 
 
 /* ---------- paper ---------- */
@@ -273,5 +297,430 @@
   .diary-paper {
     width: min(780px, 92vw);
     min-height: 750px;
+  }
+}
+.active-tool {
+  background: #f0d0d2 !important;
+}
+
+/* .diary-text {
+  min-width: 180px;
+  min-height: 40px;
+
+  margin-top: 25px;
+
+  outline: 2px dashed #df91a5;
+
+  outline-offset: 5px;
+
+  color: #654e43;
+
+  cursor: text;
+}
+
+.diary-text:focus {
+  outline: 2px dashed #3155a6;
+} */
+
+.placeholder {
+  cursor: pointer;
+}
+
+/* ---------- TEXT ELEMENT ---------- */
+
+.diary-text {
+  position: absolute;
+
+  min-width: 120px;
+  min-height: 40px;
+
+  margin: 0;
+  padding: 6px 10px;
+
+  color: #654e43;
+
+  font-family: "Caveat", cursive;
+  font-size: 28px;
+ line-height: 1.2;
+
+  outline: 2px dashed #df91a5;
+  outline-offset: 4px;
+
+  cursor: grab;
+
+  z-index: 10;
+    user-select: text;
+  touch-action: none;
+}
+
+.diary-text:focus {
+  outline: 2px dashed #3155a6;
+}
+
+.diary-text.dragging {
+  cursor: grabbing;
+}
+
+.active-tool {
+  background: #f0d0d2 !important;
+}
+
+.placeholder {
+  cursor: pointer;
+}
+
+/* ---------- IMAGE ELEMENT ---------- */
+
+.diary-image {
+  position: absolute;
+
+  height: auto;
+  display: block;
+
+  object-fit: contain;
+
+  width: 220px;
+
+  border: 2px solid #d7cbb9;
+
+  box-shadow:
+    4px 5px 0 rgba(112, 75, 58, 0.12);
+
+  cursor: grab;
+
+  user-select: none;
+
+  z-index: 9;
+}
+
+.diary-image:hover {
+  outline: 2px dashed #df91a5;
+  outline-offset: 4px;
+}
+
+.diary-image {
+  position: absolute;
+
+  height: auto;
+  display: block;
+
+  object-fit: contain;
+
+  border: 2px solid #d7cbb9;
+
+  box-shadow:
+    4px 5px 0 rgba(112, 75, 58, 0.12);
+
+  cursor: grab;
+
+  user-select: none;
+  touch-action: none;
+
+  z-index: 9;
+
+  transition: outline 0.15s ease;
+}
+
+.diary-image:hover {
+  outline: 2px dashed #df91a5;
+  outline-offset: 4px;
+}
+
+.diary-image.dragging {
+  cursor: grabbing;
+
+  outline: 2px dashed #3155a6;
+  outline-offset: 4px;
+}
+
+
+.diary-image {
+  position: absolute;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border: 2px solid #d7cbb9;
+  box-shadow: 4px 5px 0 rgba(112, 75, 58, 0.12);
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  z-index: 9;
+}
+
+.diary-image.image-selected {
+  outline: 2px dashed #df91a5;
+  outline-offset: 4px;
+}
+
+.diary-image.dragging {
+  cursor: grabbing;
+  outline-color: #3155b6;
+}
+
+.delete-image-button {
+  position: absolute;
+  z-index: 15;
+  padding: 6px 10px;
+  border: 1px solid #3155b6;
+  border-radius: 18px;
+  background: #fff8dc;
+  color: #3155b6;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* Workspace and popovers */
+.editor-workspace {
+  position: relative;
+  min-width: 0;
+}
+
+.editor-popover {
+  position: absolute;
+  top: 0;
+  left: 12px;
+  z-index: 50;
+  width: 220px;
+  padding: 14px;
+  background: #fffaf0;
+  border: 1px solid #d5c9b7;
+  border-radius: 16px;
+  box-shadow: 3px 5px 15px #704b3a20;
+}
+
+.editor-popover strong {
+  display: block;
+  margin-bottom: 10px;
+  color: #3155a6;
+  font-family: "Caveat", cursive;
+  font-size: 21px;
+}
+
+.sticker-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+.sticker-grid button,
+.paper-picker button {
+  border: 1px solid #e2d5c5;
+  border-radius: 9px;
+  padding: 7px;
+  background: #fffdf5;
+  cursor: pointer;
+}
+
+.sticker-grid button {
+  font-size: 23px;
+}
+
+.paper-picker button {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  color: #3155a6;
+  text-align: left;
+}
+
+.drawing-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  color: #3155a6;
+  font-size: 12px;
+}
+
+.drawing-controls label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.drawing-controls button {
+  border: 1px solid #d5c9b7;
+  border-radius: 12px;
+  padding: 6px 10px;
+  background: #fffaf0;
+  color: #3155a6;
+  cursor: pointer;
+}
+
+/* Paper patterns */
+.paper-lined {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 31px,
+    #8aa5d044 32px
+  );
+  background-position-y: 100px;
+}
+
+.paper-dots {
+  background-image: radial-gradient(#9a8c7b55 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.paper-grid {
+  background-image:
+    linear-gradient(#9a8c7b30 1px, transparent 1px),
+    linear-gradient(90deg, #9a8c7b30 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Drawing canvas */
+.drawing-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Elements */
+.page-element {
+  position: absolute;
+  min-width: 40px;
+  min-height: 35px;
+  transform-origin: center;
+  box-sizing: border-box;
+}
+
+.element-selected {
+  outline: 1px dashed #3155b8;
+  outline-offset: 3px;
+}
+
+.element-text {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 40px;
+  min-height: 35px;
+  resize: none;
+  overflow: auto;
+  padding: 4px;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: #654e43;
+  font-family: "Caveat", cursive;
+  font-size: 27px;
+  line-height: 1.2;
+}
+
+.element-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: auto;
+  user-select: none;
+  cursor: move;
+}
+
+.element-sticker {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  cursor: move;
+  user-select: none;
+  touch-action: none;
+}
+
+.element-delete,
+.element-front,
+.element-resize,
+.element-rotate,
+.element-move {
+  position: absolute;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 23px;
+  height: 23px;
+  padding: 0;
+  border: 1px solid #3155b8;
+  border-radius: 50%;
+  background: #fffdf5;
+  color: #3155b8;
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: none;
+}
+
+.element-delete {
+  top: -13px;
+  right: -13px;
+  background: #f7c1d2;
+}
+
+.element-front {
+  top: -13px;
+  left: -13px;
+}
+
+.element-resize {
+  right: -13px;
+  bottom: -13px;
+  cursor: nwse-resize;
+}
+
+.element-rotate {
+  left: -13px;
+  bottom: -13px;
+  cursor: grab;
+}
+
+.element-move {
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: move;
+}
+
+@media (max-width: 950px) {
+  .editor-stage {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .editor-tools {
+    position: fixed;
+    left: 50%;
+    bottom: 18px;
+    top: auto;
+    z-index: 60;
+    width: auto;
+    flex-direction: row;
+    transform: translateX(-50%);
+  }
+
+  .editor-workspace {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .diary-paper {
+    width: min(780px, 92vw);
+  }
+
+  .editor-popover {
+    position: fixed;
+    top: auto;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
